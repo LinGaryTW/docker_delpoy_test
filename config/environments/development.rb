@@ -25,21 +25,6 @@ Rails.application.configure do
         db: 0, # 这是整数，可以理解为redis数据库中的表标志，默认是16个数据库，可从0-15中取值
         expires_in: 5.hours # 过期时间的设置
     }
-    # # cache_servers = %w(redis://cache-01:6379/0 redis://cache-02:6379/0)
-    # cache_servers = "redis://cache-02:6379/0"
-    # config.cache_store = :redis_cache_store, { url: cache_servers,
-  
-    #   connect_timeout:    30,  # Defaults to 20 seconds
-    #   read_timeout:       0.2, # Defaults to 1 second
-    #   write_timeout:      0.2, # Defaults to 1 second
-    #   reconnect_attempts: 1,   # Defaults to 0
-    
-    #   error_handler: -> (method:, returning:, exception:) {
-    #     # Report errors to Sentry as warnings
-    #     Raven.capture_exception exception, level: 'warning',
-    #       tags: { method: method, returning: returning }
-    #   }
-    # }
     config.public_file_server.headers = {
       'Cache-Control' => "public, max-age=#{2.days.to_i}"
     }

@@ -54,19 +54,12 @@ Rails.application.configure do
   config.log_tags = [ :request_id ]
 
   # Use a different cache store in production.
-  cache_servers = "redis://cache-02:6379/0"
-  config.cache_store = :redis_cache_store, { url: cache_servers,
-
-    connect_timeout:    30,  # Defaults to 20 seconds
-    read_timeout:       0.2, # Defaults to 1 second
-    write_timeout:      0.2, # Defaults to 1 second
-    reconnect_attempts: 1,   # Defaults to 0
-  
-    error_handler: -> (method:, returning:, exception:) {
-      # Report errors to Sentry as warnings
-      Raven.capture_exception exception, level: 'warning',
-        tags: { method: method, returning: returning }
-    }
+  config.action_controller.perform_caching = true # 确保开启缓存，dev环境下默认是没有开启的。
+  config.cache_store = :redis_cache_store, {
+      host: 'localhost',
+      port: '6379',
+      db: 0, # 这是整数，可以理解为redis数据库中的表标志，默认是16个数据库，可从0-15中取值
+      expires_in: 5.hours # 过期时间的设置
   }
   config.public_file_server.headers = {
     'Cache-Control' => "public, max-age=#{2.days.to_i}"
