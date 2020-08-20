@@ -1,0 +1,40 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/users":
+    post:
+      summary: create a user
+      tags:
+      - users
+      parameters: []
+      responses:
+        '201':
+          description: user created
+          content: {}
+        '422':
+          description: invalid
+          content: {}
+      requestBody:
+        content:
+          application/jason:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                emai:
+                  type: string
+                ammount:
+                  type: integer
+              required:
+              - name
+              - emai
+              - ammount
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: www.example.com
