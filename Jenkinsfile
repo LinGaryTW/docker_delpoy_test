@@ -7,6 +7,7 @@ pipeline {
                 git branch: "${BRANCH}",
                     credentialsId: '79fc1830-4eff-4d5d-8586-20d85b58755a',
                     url: 'git@github.com:LinGaryTW/docker_delpoy_test.git'
+                sh "git branch"
                 sh "docker build -f ci.dockerfile -t gary_test_ci ."
             }
         }
