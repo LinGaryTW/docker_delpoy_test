@@ -10,21 +10,31 @@
 <body>
   <p>try this</p>
   <p>
-    'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json'
+    https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json
   </p>
   <label for="url">URL:</label>
-  <input type="text" name="url">
-  <button>submit</button>
+  <input type="text" name="url" class="url">
+  <button class="submit">submit</button>
   <div class="content">
 
   </div>
 </body>
 <script>
   const cities = []
-  fetch(endpoint)
+  const submit = document.querySelector('.submit')
+  const content = document.querySelector('.content')
+  
+  function sendRequest() {
+    const endpoint = document.querySelector('.url').value
+    console.log(endpoint);
+    fetch(endpoint)
     .then(blob => blob.json())
-    .then(data => cities.push(...data))
-  const submit = 
+    .then(data => cities.push(...data));
+    const names = cities.map(city => `<li>${city.city}</li>`).join('')
+    content.innerHTML = names
+  }
+
+  submit.addEventListener('click', sendRequest)
 </script>
 
 </html>
