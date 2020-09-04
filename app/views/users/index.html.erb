@@ -2,7 +2,10 @@
   <h1 data-target="hello.output"></h1>
 </div>
 <p id="notice"><%= notice %></p>
-
+<div data-controller="users" data-users-name="Gary">
+  <h1 data-target="users.output"></h1>
+  <button data-action="click->users#gary">click_me</button>
+</div>
 <h1>Users</h1>
 
 <table>
