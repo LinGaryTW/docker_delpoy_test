@@ -1,40 +1,54 @@
----
-openapi: 3.0.1
+openapi: '3.0.0'
 info:
-  title: API V1
-  version: v1
-paths:
-  "/users":
-    post:
-      summary: create a user
-      tags:
-      - users
-      parameters: []
-      responses:
-        '201':
-          description: user created
-          content: {}
-        '422':
-          description: invalid
-          content: {}
-      requestBody:
-        content:
-          application/jason:
-            schema:
-              type: object
-              properties:
-                name:
-                  type: string
-                emai:
-                  type: string
-                ammount:
-                  type: integer
-              required:
-              - name
-              - emai
-              - ammount
+  title: Rails Scoffold
+  description: this is a demo of rails scaffold api document
+  version: 1.0.0
+  contact:
+    name: Gary
+    # url: google.com.tw
+    email: gary@example.com
+
 servers:
-- url: https://{defaultHost}
-  variables:
-    defaultHost:
-      default: www.example.com
+- url: localhost:3000
+  description: this is a local application
+tags:
+- name: home
+  description: main scaffold
+- name: test
+  description: act like a postman
+paths:
+  /users:
+    get:
+      tags: 
+      - home
+      description: |
+        get home page imformation
+      responses:
+          200:
+            description: Get home page sucessfully
+          400:
+            description: Get home page fail
+  /users:
+    post:
+  /users/new:
+    get:
+  /users/{id}/edit:
+    get:
+      tags: 
+      - home
+  /users/{id}:
+    get:
+      tags: 
+      - home
+  /users/{id}:
+    put:
+      tags: 
+      - home
+  /users/{id}:
+    delete:
+      tags: 
+      - home
+  /tests:
+    get:
+      tags: 
+      - test
