@@ -9,7 +9,7 @@ info:
     email: gary@example.com
 
 servers:
-- url: localhost:3000
+- url: http://localhost:3000
   description: this is a local application
 tags:
 - name: home
@@ -28,27 +28,82 @@ paths:
             description: Get home page sucessfully
           400:
             description: Get home page fail
-  /users:
     post:
+      tags: 
+      - home
+      responses:
+          200:
+            description: Get home page sucessfully
+          400:
+            description: Get home page fail
   /users/new:
     get:
+      tags: 
+      - home
+      responses:
+          200:
+            description: Get home page sucessfully
+          400:
+            description: Get home page fail
   /users/{id}/edit:
     get:
       tags: 
       - home
-  /users/{id}:
+      parameters:
+      - $ref: "#/components/parameters/User"
+      responses:
+          200:
+            description: Get home page sucessfully
+          400:
+            description: Get home page fail
+  /users/{id}.json:
     get:
       tags: 
       - home
-  /users/{id}:
+      parameters:
+      - $ref: "#/components/parameters/User"
+      responses:
+          200:
+            description: Get home page sucessfully
+          400:
+            description: Get home page fail
     put:
       tags: 
       - home
-  /users/{id}:
+      parameters:
+      - $ref: "#/components/parameters/User"
+      responses:
+          200:
+            description: Get home page sucessfully
+          400:
+            description: Get home page fail
     delete:
       tags: 
       - home
+      parameters:
+      - $ref: "#/components/parameters/User"
+      responses:
+          200:
+            description: Get home page sucessfully
+          400:
+            description: Get home page fail
   /tests:
     get:
       tags: 
       - test
+      responses:
+          200:
+            description: Get home page sucessfully
+          400:
+            description: Get home page fail
+
+components:
+  parameters:
+    User:
+      name: id
+      in: "path"
+      description: Find out which user
+      schema:
+        type: integer
+      required: true
+      example: 1
