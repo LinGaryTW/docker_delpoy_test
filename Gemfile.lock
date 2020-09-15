@@ -82,6 +82,10 @@ GEM
     ffi (1.13.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    graphiql-rails (1.7.0)
+      railties
+      sprockets-rails
+    graphql (1.11.4)
     hiredis (0.6.3)
     i18n (1.8.5)
       concurrent-ruby (~> 1.0)
@@ -244,6 +248,8 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
   capybara (>= 2.15)
+  graphiql-rails
+  graphql
   hiredis
   jbuilder (~> 2.7)
   listen (~> 3.2)

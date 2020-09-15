@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_18_030613) do
+ActiveRecord::Schema.define(version: 2020_09_15_073321) do
+
+  create_table "links", force: :cascade do |t|
+    t.string "url"
+    t.text "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "money", force: :cascade do |t|
     t.integer "user_id", null: false
