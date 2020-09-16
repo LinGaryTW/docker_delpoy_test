@@ -11,6 +11,7 @@ module Mutations
       Link.create!(
         description: description,
         url: url,
+        admin: context[:current_admin]
       )
     end
   end
