@@ -7,5 +7,6 @@ module Types
     # field can be nil, because we added admins relationship later
     # "method" option remaps field to an attribute of Link model
     field :posted_by, AdminType, null: true, method: :admin
+    field :votes, [Types::VoteType], null: false
   end
 end
