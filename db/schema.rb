@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_16_044702) do
+ActiveRecord::Schema.define(version: 2020_09_16_061253) do
 
   create_table "admins", force: :cascade do |t|
     t.string "name"
@@ -45,6 +45,17 @@ ActiveRecord::Schema.define(version: 2020_09_16_044702) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "votes", force: :cascade do |t|
+    t.integer "link_id", null: false
+    t.integer "admin_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["admin_id"], name: "index_votes_on_admin_id"
+    t.index ["link_id"], name: "index_votes_on_link_id"
+  end
+
   add_foreign_key "links", "admins"
   add_foreign_key "money", "users"
+  add_foreign_key "votes", "admins"
+  add_foreign_key "votes", "links"
 end
