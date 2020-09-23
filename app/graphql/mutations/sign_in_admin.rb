@@ -17,9 +17,9 @@ module Mutations
       return unless admin
       return unless admin.authenticate(credentials[:password])
 
-      # use Ruby on Rails - ActiveSupport::MessageEncryptor, to build a token
-      crypt = ActiveSupport::MessageEncryptor.new(Rails.application.credentials.secret_key_base.byteslice(0..31))
-      token = crypt.encrypt_and_sign("admin-id:#{ admin.id }")
+      # use JWT token
+      payload = { data: admin.id }
+      token = JWT.encode(payload, Rails.application.secrets.secret_key_base)
 
       context[:session][:token] = token
 
