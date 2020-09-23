@@ -27,11 +27,12 @@ class GraphqlController < ApplicationController
     # if we want to change the sign-in strategy, this is the place to do it
     return unless session[:token]
 
-    crytp = ActiveSupport::MessageEncryptor.new(Rails.application.credentials.secret_key_base.byteslice(0..31))
-    token = crytp.decrypt_and_verify session[:token]
-    admin_id = token.gsub('admin-id:', '').to_i
-    Admin.find(admin_id)
-  rescue ActiveSupport::MessageVerifier::InvalidSignature
+    token = session[:token]
+    decoded = JWT.decode token, Rails.application.secrets.secret_key_base
+    admin_id = decoded[0]["data"]
+    p '======';p admin_id ;p '======='
+    Admin.find_by(id: admin_id)
+  rescue JWT::InvalidIatError
     nil
   end
 
