@@ -8,4 +8,9 @@ class GarySchema < GraphQL::Schema
 
   # Add built-in connections for pagination
   use GraphQL::Pagination::Connections
+
+  # use graphql-batch to implement promise when exec qury to avoid N+1 problem
+  use GraphQL::Batch
+
+  use GraphQL::Cache
 end

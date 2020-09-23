@@ -7,11 +7,12 @@ module Mutations
     end
 
     argument :name, String, required: true
+    argument :a_gary, Types::AGary, required: false
     argument :auth_provider, AuthProviderSignupData, required: false
 
     type Types::AdminType
 
-    def resolve(name: nil, auth_provider: nil)
+    def resolve(name: nil, auth_provider: nil, a_gary: nil)
       Admin.create!(
         name: name,
         email: auth_provider&.[](:credentials)&.[](:email),
