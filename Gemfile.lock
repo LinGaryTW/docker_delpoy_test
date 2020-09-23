@@ -90,6 +90,8 @@ GEM
     graphql-batch (0.4.3)
       graphql (>= 1.3, < 2)
       promise.rb (~> 0.7.2)
+    graphql-cache (0.6.0)
+      graphql (~> 1, > 1.8)
     hiredis (0.6.3)
     i18n (1.8.5)
       concurrent-ruby (~> 1.0)
@@ -261,6 +263,7 @@ DEPENDENCIES
   graphiql-rails
   graphql
   graphql-batch
+  graphql-cache
   hiredis
   jbuilder (~> 2.7)
   listen (~> 3.2)

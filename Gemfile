@@ -38,6 +38,7 @@ gem 'graphiql-rails', group: :development
 gem 'search_object_graphql'
 gem 'graphql'
 gem 'graphql-batch'
+gem 'graphql-cache'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -11,4 +11,6 @@ class GarySchema < GraphQL::Schema
 
   # use graphql-batch to implement promise when exec qury to avoid N+1 problem
   use GraphQL::Batch
+
+  use GraphQL::Cache
 end
